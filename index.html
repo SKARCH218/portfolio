@@ -119,6 +119,34 @@
   .stat .l{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:5px;}
   @media (max-width:620px){.stats{grid-template-columns:repeat(2,1fr);} .stat:nth-child(2){border-right:none;} .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line-soft);}}
 
+  /* ---- github stats ---- */
+  .gh-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px;}
+  @media(max-width:620px){.gh-tiles{grid-template-columns:repeat(2,1fr);}}
+  .gh-tile{background:var(--surface);border:1px solid var(--line);border-radius:11px;padding:14px 16px;}
+  .gh-tile .n{font-size:24px;font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums;letter-spacing:-.02em;}
+  .gh-tile .l{font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-top:4px;}
+  .gh-cal-wrap{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:18px;}
+  .gh-cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;font-size:12.5px;color:var(--muted);}
+  .gh-cal{display:grid;grid-template-rows:repeat(7,11px);grid-auto-flow:column;grid-auto-columns:11px;gap:3px;width:max-content;max-width:100%;overflow-x:auto;}
+  .gh-cal i{width:11px;height:11px;border-radius:2px;background:var(--line-soft);}
+  .gh-cal i.l1{background:color-mix(in srgb,var(--accent) 32%,var(--line-soft));}
+  .gh-cal i.l2{background:color-mix(in srgb,var(--accent) 55%,transparent);}
+  .gh-cal i.l3{background:color-mix(in srgb,var(--accent) 78%,transparent);}
+  .gh-cal i.l4{background:var(--accent);}
+  .gh-cal i.empty{background:transparent;}
+  .gh-legend{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:10.5px;color:var(--faint);}
+  .gh-legend i{width:10px;height:10px;border-radius:2px;display:inline-block;background:var(--line-soft);}
+  .gh-legend i.l1{background:color-mix(in srgb,var(--accent) 32%,var(--line-soft));}
+  .gh-legend i.l2{background:color-mix(in srgb,var(--accent) 55%,transparent);}
+  .gh-legend i.l3{background:color-mix(in srgb,var(--accent) 78%,transparent);}
+  .gh-legend i.l4{background:var(--accent);}
+  .gh-bar{display:flex;height:13px;border-radius:7px;overflow:hidden;margin-bottom:14px;border:1px solid var(--line-soft);}
+  .gh-bar span{height:100%;}
+  .gh-leg{display:flex;flex-wrap:wrap;gap:9px 20px;}
+  .gh-leg .it{display:flex;align-items:center;gap:7px;font-size:13px;}
+  .gh-leg .dot{width:10px;height:10px;border-radius:3px;flex:none;}
+  .gh-leg .pct{font-family:var(--mono);font-size:11.5px;color:var(--muted);}
+
   /* ---- catalog ---- */
   .cat{margin-top:30px;}
   .cat:first-child{margin-top:0;}
@@ -318,10 +346,22 @@
     <div class="stats">
       <div class="stat"><div class="n">6</div><div class="l">수상 경력</div></div>
       <div class="stat"><div class="n">11</div><div class="l">프로젝트</div></div>
-      <div class="stat"><div class="n">24</div><div class="l">GitHub 레포</div></div>
+      <div class="stat"><div class="n">26</div><div class="l">GitHub 레포</div></div>
       <div class="stat"><div class="n">2</div><div class="l">PyPI 라이브러리</div></div>
     </div>
   </header>
+  <main class="wrap">
+    <section class="blk">
+      <p class="eyebrow"><i class="ico ico-github"></i> GitHub Activity</p>
+      <div class="s-head"><h2>GitHub 통계</h2><a class="note" href="https://github.com/SKARCH218" target="_blank" rel="noopener" style="text-decoration:none">github.com/SKARCH218 ↗</a></div>
+      <div class="gh-tiles" id="gh-tiles"></div>
+      <div class="gh-cal-wrap">
+        <div class="gh-cal-head"><span id="gh-cal-title">기여 그래프</span><span class="gh-legend" id="gh-legend"></span></div>
+        <div class="gh-cal" id="gh-cal"></div>
+      </div>
+      <div class="gh-langs" id="gh-langs"></div>
+    </section>
+  </main>
 </div>
 
 <!-- PROJECTS -->
@@ -495,6 +535,7 @@
   </div>
 </footer>
 
+<script id="ghdata" type="application/json">{"summary":{"repos":26,"stars":10,"followers":5,"contributions":232},"languages":[{"lang":"Kotlin","pct":56.2,"color":"#A97BFF"},{"lang":"Python","pct":17.8,"color":"#3572A5"},{"lang":"HTML","pct":15.5,"color":"#e34c26"},{"lang":"JavaScript","pct":7.1,"color":"#f1e05a"},{"lang":"CSS","pct":1.7,"color":"#663399"},{"lang":"Shell","pct":1.0,"color":"#89e051"}],"weeks":[[0,1,0,2,0,0,1],[5,6,0,8,7,3,0],[3,0,0,4,0,1,0],[0,1,0,2,0,1,2],[7,2,0,0,0,0,0],[0,0,0,0,2,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,11,2,0,0,0],[0,3,3,0,0,0,0],[0,3,0,3,4,0,0],[0,0,0,5,0,0,0],[0,1,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,1],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,10,3,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,3,0,0,0,0],[0,0,0,16,0,6,0],[0,0,2,8,3,0,0],[0,6,0,0,0,1,2],[27,2,14,0,1,0,0],[0,0,0,1,0,1,0],[0,0,3,0,0,0,0],[0,0,0,0,3,0,0],[0,8,8,0,0,0,0],[0,0,10,-1,-1,-1,-1]],"months":["07","07","07","08","08","08","08","08","09","09","09","09","10","10","10","10","11","11","11","11","11","12","12","12","12","01","01","01","01","02","02","02","02","03","03","03","03","03","04","04","04","04","05","05","05","05","05","06","06","06","06","07","07"]}</script>
 <script id="cvb64" type="text/plain"></script>
 <script>
 (function(){
@@ -860,7 +901,26 @@
     });
   }
 
+  // ---- GitHub stats render ----
+  function renderGitHub(){
+    var el=document.getElementById('ghdata'); if(!el) return;
+    var d; try{ d=JSON.parse(el.textContent); }catch(e){ return; }
+    if(!d || !d.weeks) return;
+    var s=d.summary;
+    function tile(n,l){ return '<div class="gh-tile"><div class="n">'+n+'</div><div class="l">'+l+'</div></div>'; }
+    document.getElementById('gh-tiles').innerHTML=tile(s.contributions,'올해 기여')+tile(s.repos,'레포지토리')+tile(s.stars,'받은 스타')+tile(s.followers,'팔로워');
+    function lvl(c){ if(c<0)return 'empty'; if(c===0)return ''; if(c<=2)return 'l1'; if(c<=5)return 'l2'; if(c<=9)return 'l3'; return 'l4'; }
+    var cal=''; d.weeks.forEach(function(w){ w.forEach(function(c){ cal+='<i class="'+lvl(c)+'"></i>'; }); });
+    document.getElementById('gh-cal').innerHTML=cal;
+    document.getElementById('gh-cal-title').textContent='최근 1년 · 총 '+s.contributions+'회 기여';
+    document.getElementById('gh-legend').innerHTML='Less <i></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i> More';
+    var bar=d.languages.map(function(l){ return '<span style="width:'+l.pct+'%;background:'+l.color+'"></span>'; }).join('');
+    var leg=d.languages.map(function(l){ return '<div class="it"><span class="dot" style="background:'+l.color+'"></span>'+l.lang+' <span class="pct">'+l.pct+'%</span></div>'; }).join('');
+    document.getElementById('gh-langs').innerHTML='<div class="gh-bar">'+bar+'</div><div class="gh-leg">'+leg+'</div>';
+  }
+
   renderCatalog();
+  renderGitHub();
   route();
 })();
 </script>
