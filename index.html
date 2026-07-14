@@ -170,6 +170,15 @@
   .dt .team li{padding-left:20px;}
   .award-line{margin-top:22px;padding:14px 16px;border-radius:10px;background:color-mix(in srgb,var(--accent) 8%,transparent);border:1px solid color-mix(in srgb,var(--accent) 24%,var(--line-soft));font-size:14px;color:var(--ink);display:flex;align-items:center;gap:10px;}
   .award-line .ico{color:var(--accent);font-size:17px;}
+  .res-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px;}
+  @media (max-width:640px){.res-grid{grid-template-columns:1fr;}}
+  .res-card{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;background:var(--surface);border:1px solid var(--line);border-radius:11px;padding:13px 15px;transition:border-color .18s,transform .18s;}
+  .res-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+  .res-card .ico{font-size:19px;color:var(--accent);flex:none;}
+  .res-card>div{flex:1;min-width:0;}
+  .res-card b{display:block;font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .res-card span{display:block;font-family:var(--mono);font-size:10.5px;color:var(--faint);margin-top:2px;}
+  .res-card>.ico:last-child{font-size:13px;color:var(--muted);}
 
   /* ---- skills page ---- */
   .skills{display:grid;grid-template-columns:1fr 1fr;gap:8px 40px;}
@@ -496,7 +505,7 @@
     {key:'infra',n:'04',en:'Infra & Game Server',ko:'인프라 · 게임 서버',icon:'infra'}
   ];
   var PROJECTS=[
-    {slug:'ttarawayou',cat:'ai',category:'AI · 여행 앱',title:'충청남도 "따라와유"',
+    {slug:'ttarawayou',cat:'ai',category:'AI · 여행 앱',title:'충청남도 "따라와유"',repo:'https://github.com/SKARCH218/ttarawayou',
      badge:{icon:'award',label:'최우수상 · 2026',cls:'win'},
      period:'2026.04 – 2026.05',role:'팀장 · 4인',type:'창업 / 서비스 앱',
      summary:'예산만 입력하면 AI가 코스·식당·숙소·교통·예약을 100% 자동 결정하는 서프라이즈 여행 앱. 충남 소상공인과 여행자를 잇는 양면 시장 플랫폼으로 설계.',
@@ -569,6 +578,9 @@
          '혼자 기획부터 배포까지 수행하며 AI 도구로 개발 속도·품질을 동시에 높이는 "AI 협업 개발 프로세스" 체득',
          '단순 기능 구현을 넘어 "실제 현장에서 어떻게 쓰일까"·"자동화된 대응 체계"라는 실무 관점으로 시야 확장'
        ]}
+     ],
+     resources:[
+       {icon:'external',label:'시연 영상',sub:'Google Drive',url:'https://drive.google.com/file/d/1vtVdjZdpwmB6A1AedZsn-Dw5ThXP5pfv/view'}
      ]},
 
     {slug:'robot-assistant',cat:'ai',category:'AI · 로보틱스',title:'LLM 대화형 로봇 어시스턴트',repo:'https://github.com/SKARCH218/AI_Robot_Assistant',
@@ -600,6 +612,9 @@
          '프롬프트 엔지니어링으로 AI가 하드웨어 제어 규격에 맞는 정확한 수치를 출력하도록 최적화',
          '이론 로봇공학 지식을 실제 LLM과 결합하는 과정의 통신 지연·데이터 정밀도 문제를 소프트웨어적으로 해결'
        ]}
+     ],
+     resources:[
+       {icon:'external',label:'발표 자료',sub:'Google Docs',url:'https://docs.google.com/document/d/1AsZr76jJB83syF32XtQFJuwwfzX0BvjV/edit'}
      ],
      award:'2025 충남권 고교-대학 창업아이디어 경진대회 지역 2위(은상)'},
 
@@ -778,6 +793,13 @@
       if(s.list){ h+='<ul>'+s.list.map(function(li){return '<li>'+icoWrap('check')+li+'</li>';}).join('')+'</ul>'; }
     });
     if(p.team){ h+='<h2>'+icoWrap('team')+' 팀 구성</h2><ul class="team">'+p.team.map(function(t){return '<li>'+icoWrap('role')+t+'</li>';}).join('')+'</ul>'; }
+    if(p.resources && p.resources.length){
+      h+='<h2>'+icoWrap('repo')+' 자료 (Resources)</h2><div class="res-grid">';
+      p.resources.forEach(function(r){
+        h+='<a class="res-card" href="'+r.url+'" target="_blank" rel="noopener">'+icoWrap(r.icon||'external')+'<div><b>'+r.label+'</b><span>'+(r.sub||'')+'</span></div>'+icoWrap('arrow')+'</a>';
+      });
+      h+='</div>';
+    }
     if(p.award){ h+='<div class="award-line">'+icoWrap('award')+'<div>'+p.award+'</div></div>'; }
     document.getElementById('detail-body').innerHTML=h;
     document.getElementById('dt-back').addEventListener('click',function(){ location.hash='#projects'; });
