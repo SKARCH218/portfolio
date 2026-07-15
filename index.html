@@ -208,6 +208,16 @@
   .dt ul li{position:relative;padding-left:18px;font-size:var(--t15);color:var(--ink2);margin-top:6px;}
   .dt ul li .ico{position:absolute;left:0;top:5px;color:var(--accent);font-size:var(--t13);}
   .dt ul li b{color:var(--ink);}
+  .ph-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:6px 0 12px;}
+  @media (max-width:640px){.ph-grid{grid-template-columns:1fr;}}
+  .ph{margin:0;}
+  .ph img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--line);}
+  .ph figcaption{font-size:var(--t12);color:var(--faint);margin-top:6px;}
+  .ph.wide{grid-column:1/-1;}
+  .feat-thumb{width:96px;height:68px;object-fit:cover;border-radius:8px;border:1px solid var(--line);flex:none;user-select:none;}
+  @media (max-width:520px){.feat-thumb{display:none;}}
+  .hthumb{width:76px;height:56px;object-fit:cover;border-radius:7px;border:1px solid var(--line);flex:none;user-select:none;}
+  @media (max-width:520px){.hthumb{display:none;}}
   .res-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px;}
   @media (max-width:640px){.res-grid{grid-template-columns:1fr;}}
   .res-card{display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:10px;padding:12px 14px;transition:border-color .15s;}
@@ -404,6 +414,7 @@
       <div class="s-head"><h2>대표 성과</h2><span class="note">눌러서 자세히 보기</span></div>
       <div class="feat">
         <div class="feat-row" data-slug="ttarawayou">
+          <img class="feat-thumb" src="img/tt-poster.jpg" alt="따라와유 본선 포스터" loading="lazy">
           <div class="feat-main">
             <div class="feat-t">창업아이디어 경진대회 본선 최우수상 · 교육감상</div>
             <div class="feat-d">AI 완전자동 여행 앱 '따라와유' — 본선 10팀 중 유일한 B2C 양면 시장 모델 · 충청남도 교육청</div>
@@ -411,6 +422,7 @@
           <span class="feat-meta">2026</span><span class="feat-arrow">→</span>
         </div>
         <div class="feat-row" data-slug="solar-pdm">
+          <img class="feat-thumb" src="img/solar-system.jpg" alt="태양광 예지보전 시스템" loading="lazy">
           <div class="feat-main">
             <div class="feat-t">영마이스터 학술제 전국 3위 · 동상</div>
             <div class="feat-d">AI 태양광 예지보전 시스템 — CNN-LSTM으로 고장 탐지 정확도 약 91% · 전국마이스터고 교장협의회</div>
@@ -496,9 +508,9 @@
     <section class="blk">
       <p class="eyebrow">Awards</p>
       <div class="s-head"><h2>수상</h2><span class="note">6 awards · 2025 – 2026</span></div>
-      <div class="hrow"><i class="ico ico-award hico"></i><div class="hmain"><div class="ht">2026 충남권 고교-대학 창업아이디어 경진대회 본선 최우수상(교육감상)</div><div class="hs">충청남도 교육청</div><div class="hd">AI 완전자동 여행 앱 '따라와유'</div></div><span class="hdate">2026.05</span></div>
+      <div class="hrow"><img class="hthumb" src="img/tt-poster.jpg" alt="따라와유 포스터" loading="lazy"><div class="hmain"><div class="ht">2026 충남권 고교-대학 창업아이디어 경진대회 본선 최우수상(교육감상)</div><div class="hs">충청남도 교육청</div><div class="hd">AI 완전자동 여행 앱 '따라와유'</div></div><span class="hdate">2026.05</span></div>
       <div class="hrow"><i class="ico ico-award hico"></i><div class="hmain"><div class="ht">교내 프로젝트 계획발표 대회 3위</div><div class="hs">아산스마트팩토리마이스터고등학교</div></div><span class="hdate">2026.05</span></div>
-      <div class="hrow"><i class="ico ico-award hico"></i><div class="hmain"><div class="ht">영마이스터 학술제 전국 3위(동상)</div><div class="hs">전국마이스터고등학교 교장협의회</div><div class="hd">AI 태양광 예지보전 시스템</div></div><span class="hdate">2025.11</span></div>
+      <div class="hrow"><img class="hthumb" src="img/solar-system.jpg" alt="태양광 예지보전 시스템" loading="lazy"><div class="hmain"><div class="ht">영마이스터 학술제 전국 3위(동상)</div><div class="hs">전국마이스터고등학교 교장협의회</div><div class="hd">AI 태양광 예지보전 시스템</div></div><span class="hdate">2025.11</span></div>
       <div class="hrow"><i class="ico ico-award hico"></i><div class="hmain"><div class="ht">프로젝트 수업 결과물 교내 대회 2위</div><div class="hs">아산스마트팩토리마이스터고등학교</div></div><span class="hdate">2025.09</span></div>
       <div class="hrow"><i class="ico ico-award hico"></i><div class="hmain"><div class="ht">학생 AI코딩 창의력 한마당 (장려상)</div><div class="hs">선문대학교 SW중심대학사업단</div><div class="hd">알고리즘 제작·구현 능력 코딩 테스트</div></div><span class="hdate">2025.06</span></div>
       <div class="hrow"><i class="ico ico-award hico"></i><div class="hmain"><div class="ht">2025 충남권 고교-대학 창업아이디어 경진대회 2위(은상)</div><div class="hs">선문대학교 SW중심대학사업단</div><div class="hd">LLM 대화형 로봇 어시스턴트</div></div><span class="hdate">2025.05</span></div>
@@ -575,6 +587,9 @@
      period:'2026.04 – 2026.05',role:'팀장 · 4인',type:'창업 / 서비스 앱',
      summary:'예산만 입력하면 AI가 코스·식당·숙소·교통·예약을 100% 자동 결정하는 서프라이즈 여행 앱. 충남 소상공인과 여행자를 잇는 양면 시장 플랫폼으로 설계.',
      tags:['LangChain+GPT-4','XGBoost','OR-Tools TSP','FastAPI','PostgreSQL','React Native','AWS Lambda'],
+     photos:[
+       {src:'img/tt-poster.jpg',cap:'창업아이디어 경진대회 본선 포스터 (A3)',wide:true}
+     ],
      sections:[
        {h:'개요',icon:'ai',body:'1인 가구 증가와 결정 피로에 시달리는 현대인을 위해, 예산만 입력하면 AI가 충남 여행의 코스·식당·숙소·교통·예약을 모두 자동으로 결정·실행하는 서프라이즈 디지털 디톡스 여행 앱. 충남 소상공인과 여행자를 직접 연결하는 양면 시장(Two-sided Marketplace) 플랫폼으로 설계.'},
        {h:'주요 문제 (Pain Point)',icon:'check',list:[
@@ -702,6 +717,14 @@
      period:'2025.03 – 2025.12 (10개월)',role:'팀장 · 4인',type:'HW + AI',
      summary:'전력 데이터를 실시간 분석해 고장 징후를 사전 포착하는 AI 예지보전(Predictive Maintenance) 시스템.',
      tags:['CNN-LSTM','Arduino','Raspberry Pi','INA219','I2C 분산제어'],
+     photos:[
+       {src:'img/solar-system.jpg',cap:'완성된 예지보전 시스템 — 6×5 패널 어레이와 실시간 대시보드',wide:true},
+       {src:'img/solar-test.jpg',cap:'Raspberry Pi 제어부와 연결해 실시간 데이터 검증'},
+       {src:'img/solar-coding.jpg',cap:'어레이 앞에서 제어 소프트웨어 작업'},
+       {src:'img/solar-assemble.jpg',cap:'패널 배치·정렬 작업'},
+       {src:'img/solar-wiring.jpg',cap:'교차점(Row-Column) 토폴로지 배선'},
+       {src:'img/solar-frame.jpg',cap:'알루미늄 프레임 접합'}
+     ],
      sections:[
        {h:'개요',icon:'ai',body:'태양광 발전소의 유지보수 비용을 절감하고 발전 효율을 높이기 위해, 전력 데이터를 실시간 분석해 고장 징후를 사전 포착하는 AI 예지보전 시스템. 사후 보수 방식의 높은 유지비·발전 중단 손실을 실시간 예측으로 예방.'},
        {h:'하드웨어',icon:'hw',list:[
@@ -857,6 +880,11 @@
     if(p.repo){ h+='<div class="m">'+ic('repo')+'<span class="lab">저장소</span><a class="val" href="'+p.repo+'" target="_blank" rel="noopener">GitHub ↗</a></div>'; }
     h+='</div>';
     h+='<div class="dt-tags">'+p.tags.join(' · ')+'</div>';
+    if(p.photos && p.photos.length){
+      h+='<div class="ph-grid">'+p.photos.map(function(ph){
+        return '<figure class="ph'+(ph.wide?' wide':'')+'"><img src="'+ph.src+'" alt="'+(ph.cap||p.title)+'" loading="lazy"><figcaption>'+(ph.cap||'')+'</figcaption></figure>';
+      }).join('')+'</div>';
+    }
     (p.sections||[]).forEach(function(s){
       h+='<h2>'+ic(s.icon||'check')+' '+s.h+'</h2>';
       if(s.body){ h+='<p class="body">'+s.body+'</p>'; }
