@@ -1,0 +1,4 @@
+.omc/
+_*.txt
+_*.py
+.DS_Store
