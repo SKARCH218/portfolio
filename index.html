@@ -232,6 +232,10 @@
   .kind{font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.03em;padding:2px 6px;border-radius:5px;vertical-align:middle;white-space:nowrap;}
   .kind-idea{color:var(--gold);background:color-mix(in srgb,var(--gold) 12%,transparent);border:1px solid color-mix(in srgb,var(--gold) 35%,var(--line));}
   .kind-built{color:var(--signal);background:color-mix(in srgb,var(--signal) 12%,transparent);border:1px solid color-mix(in srgb,var(--signal) 32%,var(--line));}
+  .status{font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.03em;padding:2px 7px;border-radius:5px;white-space:nowrap;display:inline-flex;align-items:center;gap:4px;vertical-align:middle;}
+  .status-done{color:var(--muted);background:var(--surface-2);border:1px solid var(--line-soft);}
+  .status-ing{color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent);border:1px solid color-mix(in srgb,var(--accent) 40%,var(--line));}
+  .status-ing::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);animation:blink 1.4s ease-in-out infinite;}
   .kind-note{display:flex;gap:11px;align-items:flex-start;padding:13px 16px;border-radius:10px;font-size:13.5px;line-height:1.55;margin-bottom:18px;color:var(--ink-soft);}
   .kind-note .ico{font-size:17px;margin-top:1px;flex:none;}
   .kind-note b{color:var(--ink);}
@@ -278,9 +282,13 @@
   .res-card>.ico:last-child{font-size:13px;color:var(--muted);}
 
   /* ---- skills page ---- */
-  .sk-legend{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin:0 0 14px;display:flex;flex-wrap:wrap;align-items:center;gap:6px;}
-  .sk-legend b{color:var(--accent);font-weight:700;}
-  .sk-legend span{color:var(--faint);margin:0 2px;}
+  .sk-criteria{margin:0 0 20px;padding:15px 18px;background:var(--surface);border:1px solid var(--line);border-radius:12px;}
+  .skc-title{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:12px;}
+  .skc-list{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+  @media(max-width:720px){.skc-list{grid-template-columns:1fr 1fr;}}
+  .skc b{display:block;font-family:var(--mono);font-size:13px;color:var(--ink);margin-bottom:4px;font-weight:600;}
+  .skc b i{color:var(--accent);font-style:normal;margin-right:3px;}
+  .skc span{color:var(--muted);font-size:11.5px;line-height:1.42;}
   .skico{font-size:19px;}
   .sk-nm{display:flex;flex-direction:column;line-height:1.1;}
   .sk-nm b{font-family:var(--mono);font-size:14px;font-weight:600;}
@@ -485,7 +493,16 @@
     <section class="blk">
       <p class="eyebrow"><i class="ico ico-skills"></i> Skills</p>
       <div class="s-head"><h2>기술 스택</h2><span class="note">AI · 크로스플랫폼 · 임베디드</span></div>
-      <p class="sk-legend">숙련도 &nbsp;<b>1</b> 입문<span>·</span><b>2</b> 기초<span>·</span><b>3</b> 활용<span>·</span><b>4</b> 능숙<span>·</span><b>5</b> 전문</p>
+      <div class="sk-criteria">
+        <span class="skc-title">숙련도 기준</span>
+        <div class="skc-list">
+          <div class="skc"><b><i>5</i> 전문</b><span>제약 없이 원하는 것을 구현할 수 있는 수준</span></div>
+          <div class="skc"><b><i>4</i> 능숙</b><span>실무 프로젝트를 독립적으로 수행하는 수준</span></div>
+          <div class="skc"><b><i>3</i> 활용</b><span>공식 문서를 참고해 기능을 구현하는 수준</span></div>
+          <div class="skc"><b><i>2</i> 기초</b><span>기본 문법·개념을 이해한 수준</span></div>
+          <div class="skc"><b><i>1</i> 입문</b><span>학습을 시작한 단계</span></div>
+        </div>
+      </div>
       <div class="skills" id="skills">
         <div class="sk"><span class="li li-kotlin skico"></span><div class="sk-nm"><b>Kotlin</b><small>KMP · Ktor</small></div><div class="bar" data-lvl="5"><i class="seg"></i><i class="seg"></i><i class="seg"></i><i class="seg"></i><i class="seg"></i></div><span class="lvl">전문</span></div>
         <div class="sk"><span class="li li-python skico"></span><div class="sk-nm"><b>Python</b><small>AI · FastAPI</small></div><div class="bar" data-lvl="5"><i class="seg"></i><i class="seg"></i><i class="seg"></i><i class="seg"></i><i class="seg"></i></div><span class="lvl">전문</span></div>
@@ -605,7 +622,7 @@
     {key:'infra',n:'04',en:'Infra & Game Server',ko:'인프라 · 게임 서버',icon:'infra'}
   ];
   var PROJECTS=[
-    {slug:'ttarawayou',cat:'ai',category:'AI · 여행 앱',title:'충청남도 "따라와유"',repo:'https://github.com/SKARCH218/ttarawayou',kind:'idea',
+    {slug:'ttarawayou',cat:'ai',category:'AI · 여행 앱',title:'충청남도 "따라와유"',repo:'https://github.com/SKARCH218/ttarawayou',kind:'idea',status:'진행중',
      badge:{icon:'award',label:'최우수상 · 2026',cls:'win'},
      period:'2026.04 – 2026.05',role:'팀장 · 4인',type:'창업 / 서비스 앱',
      summary:'예산만 입력하면 AI가 코스·식당·숙소·교통·예약을 100% 자동 결정하는 서프라이즈 여행 앱. 충남 소상공인과 여행자를 잇는 양면 시장 플랫폼으로 설계.',
@@ -862,7 +879,7 @@
         html+='<button class="prj" data-slug="'+p.slug+'">'
           +'<div class="prj-top"><span class="prj-cat">'+p.category+'</span>'
           +'<span class="badge '+(b.cls||'')+'">'+icoWrap(b.icon)+b.label+'</span></div>'
-          +'<h4>'+p.title+' <span class="kind kind-'+(p.kind||'built')+'">'+(p.kind==='idea'?'아이디어':'구현')+'</span></h4><p>'+p.summary.split('. ')[0]+'.</p>'
+          +'<h4>'+p.title+' <span class="kind kind-'+(p.kind||'built')+'">'+(p.kind==='idea'?'아이디어':'구현')+'</span> <span class="status status-'+((p.status||'완료')==='진행중'?'ing':'done')+'">'+(p.status||'완료')+'</span></h4><p>'+p.summary.split('. ')[0]+'.</p>'
           +'<div class="prj-tags">'+p.tags.slice(0,4).map(function(t){return '<span>'+t+'</span>';}).join('')+'</div>'
           +'<span class="prj-more">자세히 보기 '+icoWrap('arrow')+'</span></button>';
       });
@@ -882,7 +899,7 @@
     var h='<button class="dt-back" id="dt-back">'+icoWrap('back')+' 프로젝트 목록</button>';
     h+='<div class="dt-cat">'+icoWrap(CATS.filter(function(c){return c.key===p.cat;})[0].icon)+' '+p.category+'</div>';
     h+='<h1>'+p.title+'</h1>';
-    h+='<div class="dt-badges"><span class="badge '+(b.cls||'')+'">'+icoWrap(b.icon)+b.label+'</span></div>';
+    h+='<div class="dt-badges"><span class="badge '+(b.cls||'')+'">'+icoWrap(b.icon)+b.label+'</span><span class="status status-'+((p.status||'완료')==='진행중'?'ing':'done')+'">'+(p.status||'완료')+'</span></div>';
     h+='<p class="dt-summary">'+p.summary+'</p>';
     if(p.kind==='idea'){ h+='<div class="kind-note idea">'+icoWrap('book')+'<div><b>아이디어 · 기획 프로젝트</b> — 창업 아이디어 경진대회 출품작으로, 실제 앱은 미구현이며 기획·설계·MVP·발표 자료 중심입니다.</div></div>'; }
     else { h+='<div class="kind-note built">'+icoWrap('check')+'<div><b>구현 프로젝트</b> — 실제 코드로 구현·배포한 결과물입니다.</div></div>'; }
