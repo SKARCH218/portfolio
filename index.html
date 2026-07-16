@@ -434,7 +434,7 @@
         <div class="feat-row" data-slug="rpi-arduino-pin">
           <div class="feat-main">
             <div class="feat-t">PyPI 오픈소스 라이브러리 2종 배포</div>
-            <div class="feat-d">rpi-arduino-pin · simpledb-wrapper — 만들고 끝나지 않고, 배포해 사용자와 함께 개선</div>
+            <div class="feat-d">rpi-arduino-pin · simpledb-wrapper — 동아리원도 쉽게 쓰도록 복잡한 GPIO 제어를 단일 API로</div>
           </div>
           <span class="feat-meta">2025</span><span class="feat-arrow">→</span>
         </div>
@@ -496,8 +496,8 @@
 
       <div class="story">
         <h3><i>03</i>만들면 배포하고, 배포하며 배운다</h3>
-        <p class="bad"><b>문제.</b> 혼자 쓰고 끝나는 코드는 검증되지 않고, 남지도 않았습니다.</p>
-        <p class="good"><b>해결.</b> 라이브러리 2종을 PyPI에 올리고, Minecraft 플러그인 8종을 실서버에서 운영했습니다. 실제 사용자의 피드백이 코드를 가장 빠르게 성장시켰습니다.</p>
+        <p class="bad"><b>문제.</b> 동아리에서 라즈베리파이를 가르치다 보니, MCU(아두이노)와 달리 GPIO 제어는 초기 설정·핀 모드·리소스 정리까지 복잡해 처음 접하는 동아리원들이 진입장벽에서 막혔습니다.</p>
+        <p class="good"><b>해결.</b> 그 복잡함을 단일 API로 감싼 라이브러리를 만들어 PyPI에 배포했습니다 — pip 한 줄이면 누구나 따라올 수 있게. 이 원칙대로 simpledb-wrapper, Minecraft 플러그인 8종도 실사용자에게 배포하며 다듬었습니다.</p>
         <button class="go" data-slug="rpi-arduino-pin">rpi-arduino-pin →</button>
       </div>
     </section>
@@ -755,9 +755,10 @@
     {slug:'rpi-arduino-pin',cat:'hw',category:'라이브러리 · PyPI',title:'rpi-arduino-pin',repo:'https://github.com/SKARCH218/rpi-arduino-pin',
      badge:{icon:'pypi',label:'PyPI',cls:''},
      period:'배포 중',role:'개인 · 오픈소스',type:'Python 라이브러리',
-     summary:'라즈베리파이 GPIO와 아두이노 시리얼을 단일 API로 제어하는 파이썬 라이브러리. pip install rpi-arduino-pin.',
+     summary:'라즈베리파이 GPIO와 아두이노 시리얼을 단일 API로 제어하는 파이썬 라이브러리. 동아리원들이 쉽게 따라올 수 있도록 복잡한 핀 제어를 추상화해 PyPI에 배포.',
      tags:['Python','gpiozero','pip'],
      sections:[
+       {h:'계기',icon:'team',body:'PLAYLABS 동아리에서 라즈베리파이를 다루다 보면, MCU(아두이노)와 달리 GPIO 제어에는 초기 설정·핀 모드·리소스 정리 같은 복잡도가 있어 처음 접하는 동아리원들이 어려워했다. 누구나 쉽게 따라올 수 있도록 이 복잡함을 단일 API로 감싸 라이브러리로 만들었다.'},
        {h:'기능',icon:'skills',list:[
          '<b>Rasp 클래스</b> — 디지털 I/O, 초음파(HC-SR04) 거리 측정, 서보 PWM, 인터럽트(Edge) 감지',
          '<b>Ard 클래스</b> — 시리얼로 아두이노 디지털/아날로그 I/O·서보·인터럽트 제어, 다중 아두이노 지원'
