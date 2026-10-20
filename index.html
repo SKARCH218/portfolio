@@ -216,6 +216,8 @@
   .ph img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--line);}
   .ph figcaption{font-size:var(--t12);color:var(--faint);margin-top:6px;}
   .ph.wide{grid-column:1/-1;}
+  .ph-grid.c3{grid-template-columns:repeat(3,1fr);}
+  @media (max-width:640px){.ph-grid.c3{grid-template-columns:1fr 1fr;}}
   .feat-thumb{width:96px;height:68px;object-fit:cover;border-radius:8px;border:1px solid var(--line);flex:none;user-select:none;}
   @media (max-width:520px){.feat-thumb{display:none;}}
   .hthumb{width:76px;height:56px;object-fit:cover;border-radius:7px;border:1px solid var(--line);flex:none;user-select:none;}
@@ -448,7 +450,7 @@
           <span class="feat-meta">2025</span><span class="feat-arrow">→</span>
         </div>
       </div>
-      <p class="numline"><b>7</b> 수상<span>|</span><b>14</b> 프로젝트<span>|</span><b>3</b>회 팀 리딩<span>|</span><b>2</b>종 PyPI 배포</p>
+      <p class="numline"><b>7</b> 수상<span>|</span><b>15</b> 프로젝트<span>|</span><b>3</b>회 팀 리딩<span>|</span><b>2</b>종 PyPI 배포</p>
     </section>
   </main>
 </div>
@@ -594,7 +596,8 @@
     {key:'infra',n:'04',en:'Infra & Game Server',ko:'인프라 · 게임 서버'}
   ];
   var PROJECTS=[
-    {slug:'ttarawayou',cat:'ai',category:'AI · 여행 앱',title:'충청남도 "따라와유"',repo:'https://github.com/SKARCH218/ttarawayou',kind:'idea',status:'진행중',
+    {slug:'ttarawayou',cat:'ai',category:'AI · 여행 앱',title:'충청남도 "따라와유"',repo:'https://github.com/SKARCH218/ttarawayou',kind:'idea',status:'',
+     kindNote:'<b>아이디어 · 기획 프로젝트</b> — 창업 아이디어 경진대회 출품작. 이 아이디어는 이후 <a href="#p/travit">트레빗(Travit)</a>으로 리브랜딩해 실제 서비스로 구현했습니다.',
      badge:{icon:'award',label:'최우수상 · 2026',cls:'win'},
      period:'2026.04 – 2026.05',role:'팀장 · 4인',type:'창업 / 서비스 앱',
      summary:'예산만 입력하면 AI가 코스·식당·숙소·교통·예약을 100% 자동 결정하는 서프라이즈 여행 앱. 충남 소상공인과 여행자를 잇는 양면 시장 플랫폼으로 설계.',
@@ -645,6 +648,37 @@
        {icon:'external',label:'본선 포스터 (A3)',sub:'PDF · GitHub',url:'https://github.com/SKARCH218/ttarawayou/blob/main/%EC%84%A0%EB%AC%B8%EB%8C%80_%EC%B0%BD%EC%97%85%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4_%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C/%EB%94%B0%EB%9D%BC%EC%99%80%EC%9C%A0_%EB%B3%B8%EC%84%A0_%ED%8F%AC%EC%8A%A4%ED%84%B0_A3.pdf'}
      ],
      award:'2026 충남권 고교-대학 창업아이디어 경진대회 본선 최우수상(교육감상) · 충청남도 교육청'},
+
+    {slug:'travit',cat:'ai',category:'AI · 여행 서비스',title:'트레빗 (Travit)',repo:'https://github.com/SKARCH218/ttarawayou/tree/OGQ',kind:'built',status:'진행중',
+     badge:{icon:'ai',label:'OGQ AI Competition · 2026',cls:'win'},
+     period:'2026',role:'팀 PLAYLABS',type:'Android 앱 · 웹 데모 · 백엔드',
+     summary:'따라와유 아이디어를 리브랜딩해 실제로 구현한 AI 서프라이즈 여행 내비게이터. 예산과 취향만 입력하면 LLM이 일정을 결정하고, 개별 장소는 도착하는 순간까지 비공개.',
+     tags:['Kotlin Multiplatform','Jetpack Compose','Spring Boot 3','로컬 LLM','TMAP · TAGO · OSRM','Leaflet','Docker'],
+     logo:'img/travit-logo.svg',
+     sections:[
+       {h:'개요',icon:'ai',body:'제4회 NAVER OGQ마켓 AI Competition 출품작(팀 PLAYLABS). "결정을 도와주는 AI가 아니라 결정을 대신 해버리는 AI"라는 역발상으로, 일정·식당·숙소·동선을 AI가 결정하고 개별 장소는 도착 반경 20m에서만 공개한다. 수도권 21개 지역 지원, GPS 없이 심사·시연이 가능한 데모 모드 내장.'},
+       {h:'핵심 경험',icon:'check',list:[
+         '<b>질문형 온보딩</b> — 취향 질문 8개를 한 화면에 하나씩, 단일 선택은 고르면 바로 다음으로',
+         '<b>프로필 기반 AI 계획</b> — "10대 INFP, 휴양 목적, 걷기 싫어함"이면 산을 빼고 이동을 최소화, 자연어 취향 메모도 프롬프트에 반영',
+         '<b>미스터리 내비게이션</b> — 발밑 130m씩만 공개되는 경로, 도착 반경 20m에서 장소 리빌',
+         '<b>대중교통 통합</b> — 승하차 정류장 안내, 실시간 버스 도착정보, 하차 카운트다운'
+       ]},
+       {h:'아키텍처',icon:'infra',list:[
+         '<b>Android</b> — Kotlin Multiplatform + Jetpack Compose(Material3), shared 모듈(DTO·Ktor)로 iOS 공유 가능 구조',
+         '<b>웹 데모</b> — Vanilla JS + Leaflet/OSM, 심사위원 체험용',
+         '<b>백엔드</b> — Kotlin + Spring Boot 3 단일 jar: LLM 일정 설계, 예산 배분·스코어링·동선 최적화, 실시간 버스(TAGO), 토큰 선결제 지갑(H2+JPA)',
+         '<b>AI</b> — LM Studio 로컬 LLM(OpenAI 호환) + 실패 시 휴리스틱 폴백'
+       ]},
+       {h:'폴백 설계',icon:'wrench',body:'외부 API 키가 하나도 없어도 전체 플로우가 동작한다. TMAP이 없으면 수도권 시드 데이터로, LLM이 없으면 휴리스틱으로, 대중교통 API가 없으면 도보 경로로 대체되는 폴백 체인을 설계해 심사·시연 환경의 변수를 제거했다.'},
+       {h:'배포',icon:'deploy',body:'Docker 멀티스테이지 빌드로 백엔드와 웹 데모를 단일 jar로 패키징해 라이브 데모를 운영 중.'}
+     ],
+     resources:[
+       {icon:'external',label:'라이브 데모',sub:'데모 모드 · 수도권',url:'http://112.166.208.166'}
+     ],
+     gallery:{title:'앱 화면',cols:3,items:[
+       {src:'img/travit-1.jpg',cap:'인트로'},{src:'img/travit-2.jpg',cap:'여행 설정'},{src:'img/travit-3.jpg',cap:'취향 질문'},
+       {src:'img/travit-4.jpg',cap:'결과 · AI 추천 이유'},{src:'img/travit-5.jpg',cap:'여정 · 경로 안내'},{src:'img/travit-6.jpg',cap:'도착 공개'}
+     ]}},
 
     {slug:'ai-log-panel',cat:'ai',category:'AI · 데스크톱 툴',title:'AI-Log-Panel',repo:'https://github.com/SKARCH218/ai_logpanel',
      badge:{icon:'ai',label:'2026',cls:''},
@@ -932,7 +966,7 @@
         html+='<button class="prj" data-slug="'+p.slug+'">'
           +'<div class="prj-top"><span class="prj-cat">'+p.category+'</span>'
           +'<span class="badge '+(b.cls||'')+'">'+ic(b.icon)+b.label+'</span></div>'
-          +'<h4>'+p.title+' <span class="kind kind-'+(p.kind||'built')+'">'+(p.kind==='idea'?'아이디어':'구현')+'</span> <span class="status status-'+((p.status||'완료')==='진행중'?'ing':'done')+'">'+(p.status||'완료')+'</span></h4>'
+          +'<h4>'+p.title+' <span class="kind kind-'+(p.kind||'built')+'">'+(p.kind==='idea'?'아이디어':'구현')+'</span>'+(p.status===''?'':' <span class="status status-'+((p.status||'완료')==='진행중'?'ing':'done')+'">'+(p.status||'완료')+'</span>')+'</h4>'
           +'<p>'+p.summary.split('. ')[0]+'.</p>'
           +'<div class="prj-tags">'+p.tags.slice(0,4).join(' · ')+'</div></button>';
       });
@@ -952,9 +986,9 @@
     var h='<button class="dt-back" id="dt-back">'+ic('back')+' 프로젝트 목록</button>';
     h+='<div class="dt-cat">'+p.category+'</div>';
     h+='<h1>'+p.title+'</h1>';
-    h+='<div class="dt-badges"><span class="badge '+(b.cls||'')+'">'+ic(b.icon)+b.label+'</span><span class="status status-'+((p.status||'완료')==='진행중'?'ing':'done')+'">'+(p.status||'완료')+'</span></div>';
+    h+='<div class="dt-badges"><span class="badge '+(b.cls||'')+'">'+ic(b.icon)+b.label+'</span>'+(p.status===''?'':'<span class="status status-'+((p.status||'완료')==='진행중'?'ing':'done')+'">'+(p.status||'완료')+'</span>')+'</div>';
     h+='<p class="dt-summary">'+p.summary+'</p>';
-    if(p.kind==='idea'){ h+='<div class="kind-note idea">'+ic('book')+'<div><b>아이디어 · 기획 프로젝트</b> — 창업 아이디어 경진대회 출품작으로, 실제 앱은 미구현이며 기획·설계·MVP·발표 자료 중심입니다.</div></div>'; }
+    if(p.kind==='idea'){ h+='<div class="kind-note idea">'+ic('book')+'<div>'+(p.kindNote||'<b>아이디어 · 기획 프로젝트</b> — 창업 아이디어 경진대회 출품작으로, 실제 앱은 미구현이며 기획·설계·MVP·발표 자료 중심입니다.')+'</div></div>'; }
     else { h+='<div class="kind-note built">'+ic('check')+'<div><b>구현 프로젝트</b> — 실제 코드로 구현·배포한 결과물입니다.</div></div>'; }
     h+='<div class="dt-meta">';
     h+='<div class="m">'+ic('cal')+'<span class="lab">기간</span><span class="val">'+p.period+'</span></div>';
@@ -972,7 +1006,7 @@
     if(p.team){ h+='<h2>'+ic('team')+' 팀 구성</h2><ul>'+p.team.map(function(t){return '<li>'+ic('role')+t+'</li>';}).join('')+'</ul>'; }
     if(p.gallery && p.gallery.items && p.gallery.items.length){
       h+='<h2>'+ic('external')+' '+(p.gallery.title||'사진')+'</h2>';
-      h+='<div class="ph-grid">'+p.gallery.items.map(function(ph){
+      h+='<div class="ph-grid'+(p.gallery.cols===3?' c3':'')+'">'+p.gallery.items.map(function(ph){
         return '<figure class="ph'+(ph.wide?' wide':'')+'"><img src="'+ph.src+'" alt="'+(ph.cap||p.title)+'" loading="lazy">'+(ph.cap?'<figcaption>'+ph.cap+'</figcaption>':'')+'</figure>';
       }).join('')+'</div>';
     }
