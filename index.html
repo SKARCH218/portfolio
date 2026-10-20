@@ -406,6 +406,7 @@
       <span class="mq-item">Minecraft 플러그인 <b>8종 실서버 운영</b></span>
       <span class="mq-item">PLAYLABS 메이커동아리 <b>회장</b></span>
       <span class="mq-item">고장 탐지 정확도 <b>91%</b> 예지보전 시스템</span>
+      <span class="mq-item">교내 프로젝트 작품 전시회 <b>1위</b></span>
       <span class="mq-item">PyCon Korea 2025 <b>참여</b></span>
     </div>
   </div>
@@ -431,6 +432,14 @@
           </div>
           <span class="feat-meta">2025</span><span class="feat-arrow">→</span>
         </div>
+        <div class="feat-row" data-slug="asmago-laundry">
+          <img class="feat-thumb" src="img/laundry-logo.png" alt="아스마고 세탁실 로고" loading="lazy" style="object-fit:contain;background:#fff">
+          <div class="feat-main">
+            <div class="feat-t">교내 프로젝트 작품 전시회 1위</div>
+            <div class="feat-d">아스마고 세탁실 — 기숙사 세탁기·건조기 실시간 현황과 완료 알림 (SmartThings 연동)</div>
+          </div>
+          <span class="feat-meta">2026</span><span class="feat-arrow">→</span>
+        </div>
         <div class="feat-row" data-slug="rpi-arduino-pin">
           <div class="feat-main">
             <div class="feat-t">PyPI 오픈소스 라이브러리 2종 배포</div>
@@ -439,7 +448,7 @@
           <span class="feat-meta">2025</span><span class="feat-arrow">→</span>
         </div>
       </div>
-      <p class="numline"><b>7</b> 수상<span>|</span><b>11</b> 프로젝트<span>|</span><b>3</b>회 팀 리딩<span>|</span><b>2</b>종 PyPI 배포</p>
+      <p class="numline"><b>7</b> 수상<span>|</span><b>14</b> 프로젝트<span>|</span><b>3</b>회 팀 리딩<span>|</span><b>2</b>종 PyPI 배포</p>
     </section>
   </main>
 </div>
@@ -767,6 +776,53 @@
        {h:'배포',icon:'deploy',body:'PyPI에 정식 배포. gpiozero 의존성 자동 설치, 아두이노 스케치(ard.ino) 동봉으로 시리얼 명령 해석.'}
      ]},
 
+    {slug:'asmago-laundry',cat:'mobile',category:'웹 서비스 · IoT',title:'아스마고 세탁실',repo:'https://github.com/SKARCH218/asmago-laundry',
+     badge:{icon:'award',label:'교내 1위 · 2026',cls:'win'},
+     period:'2026',role:'개인',type:'웹 서비스 · PWA',
+     summary:'기숙사 세탁기·건조기(삼성 SmartThings 연동)의 실시간 사용 상태를 보여주는 웹앱. "세탁기가 이미 사용중인지 모른 채 갔다가 헛걸음"하는 문제를 해결.',
+     tags:['Next.js','TypeScript','SmartThings API','OAuth','Web Push','PWA'],
+     logo:'img/laundry-logo.png',
+     sections:[
+       {h:'개요',icon:'ai',body:'기숙사생이 세탁실에 가기 전에 세탁기·건조기 상태를 확인하고, 세탁이 끝나면 알림을 받는 실시간 현황 서비스. 삼성 SmartThings에 등록된 실제 기기와 연동해 대기중·사용중·완료·연결 끊김 상태와 남은 시간을 보여준다.'},
+       {h:'주요 기능',icon:'check',list:[
+         '<b>실시간 현황</b> — 세탁기/건조기별 상태와 남은 시간, 세탁실 도면 그대로의 위치 배치 화면',
+         '<b>Web Push 완료 알림</b> — 서비스 워커 기반이라 탭을 닫아도 수신, 기기별 구독',
+         '<b>상태 자동 보정</b> — 완료 5분 후 자동 대기 전환, 완료 예정이 10분 이상 지나면 통신 두절로 판단해 연결 끊김 표시',
+         '<b>게시판·문의</b> — 이용자 소통 기능 포함, PWA로 홈 화면 설치 지원'
+       ]},
+       {h:'기술 설계',icon:'skills',list:[
+         '<b>SmartThings OAuth-In</b> — 만료가 짧은 PAT 대신 리프레시 토큰으로 서버가 액세스 토큰을 자동 갱신',
+         '<b>기기 네이밍 규칙</b> — {위치코드}-{W|D}-{번호} 규칙만으로 신규 기기를 코드 수정 없이 위치에 매핑',
+         '<b>폴링 기반 완료 감지</b> — 서버리스 환경의 제약을 외부 크론 호출 전략으로 보완'
+       ]}
+     ],
+     award:'2026학년도 교내 프로젝트 작품 전시회 1위',
+     gallery:{title:'발표 자료',items:[
+       {src:'img/laundry-s1.jpg',wide:true},
+       {src:'img/laundry-s2.jpg'},{src:'img/laundry-s3.jpg'},
+       {src:'img/laundry-s4.jpg'},{src:'img/laundry-s5.jpg'},
+       {src:'img/laundry-s6.jpg',wide:true}
+     ]}},
+
+    {slug:'asm-festival-pos',cat:'mobile',category:'웹 · 실시간',title:'학교 축제 멀티 부스 POS',repo:'https://github.com/SKARCH218/asm-festival-pos',
+     badge:{icon:'infra',label:'Firebase · 2026',cls:''},
+     period:'2026',role:'개인',type:'웹 서비스',
+     summary:'학교 축제를 위한 서버리스 멀티 부스 포스·주방·혼잡도 시스템. 정적 웹과 Firestore 실시간 동기화만으로 주문부터 전교 매출 집계까지 처리.',
+     tags:['Firebase Firestore','Firebase Hosting','Tailwind','실시간 동기화'],
+     sections:[
+       {h:'구성',icon:'infra',list:[
+         '<b>소비자 페이지</b> — 학급별 혼잡도 안내 (매출 데이터에는 접근하지 않음)',
+         '<b>학급 POS</b> — 주문 접수·결제, 메뉴 추가/편집, 주문 내역과 환불',
+         '<b>주방 화면</b> — 실시간 주문 카드, 요리 완성·환불 처리',
+         '<b>교사용</b> — 전교 매출·혼잡도·순위, PIN 보호'
+       ]},
+       {h:'설계 포인트',icon:'skills',list:[
+         '서버 없는 정적 웹 + Firestore 실시간 구독만으로 다중 부스 동시 운영',
+         '소비자 페이지는 혼잡도 컬렉션만 읽도록 분리해 매출 노출을 차단',
+         '한글 커스텀 도메인(아스마축제.kro.kr)을 punycode로 연결, 축제 종료 후 규칙 잠금 운영 가이드까지 문서화'
+       ]}
+     ]},
+
     {slug:'hyeonchungsa',cat:'mobile',category:'Android · AR',title:'현충사 역사체험 앱',repo:'https://github.com/SKARCH218/trip_to_Hyeonchungsa',
      badge:{icon:'team-badge',label:'팀 5인 · 2025',cls:''},
      period:'2025.09 – 2026.01',role:'팀장 · 5인',type:'모바일 앱',
@@ -832,6 +888,20 @@
          '공개 다운로드 페이지(OVPN·계정 신청) + 로그인 관리자 패널(계정 관리·서버 제어)',
          'install.sh 설치 스크립트 + manage-users.sh CLI 유저 관리'
        ]}
+     ]},
+
+    {slug:'tiktok-ball-battle',cat:'infra',category:'게임 · 라이브 방송',title:'TikTok Ball Battle',repo:'https://github.com/SKARCH218/tiktok-ball-battle',
+     badge:{icon:'operate',label:'Electron · 2026',cls:''},
+     period:'2026',role:'개인',type:'데스크톱 게임',
+     summary:'TikTok LIVE 시청자가 채팅으로 팀에 참가해 스킬을 쏘며 싸우는 실시간 방송 게임. 후원·좋아요·팔로우 이벤트가 게임 안의 공격으로 이어진다.',
+     tags:['Electron','JavaScript','tiktok-live-connector','Canvas'],
+     sections:[
+       {h:'규칙 · 연동',icon:'operate',list:[
+         '채팅에 팀 키(A/B)를 치면 참가, 탈락해도 게임은 계속 진행',
+         '<b>후원 1건 = 3턴 스킬 공격</b>(최대 15턴), 좋아요·팔로우는 장미 효과 5초',
+         'tiktok-live-connector로 라이브 이벤트를 수신, 아이디 없이 시험하는 데모 모드 내장'
+       ]},
+       {h:'배포',icon:'deploy',body:'electron-builder로 설치 없이 실행되는 Windows 단일 exe를 생성. 방송 송출 화면에 바로 띄울 수 있게 구성.'}
      ]},
 
     {slug:'mc-plugins',cat:'infra',category:'Kotlin / Paper',title:'Minecraft 플러그인 8종',repo:'https://github.com/SKARCH218',
